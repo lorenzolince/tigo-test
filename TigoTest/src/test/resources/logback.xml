@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %-45([%logger{10}]) %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Solo muestra INFO desde tus pasos -->
+    <logger name="com.tigo.test.steps" level="INFO"/>
+
+    <!-- Silencia los logs Spring Test Context -->
+    <logger name="org.springframework.test.context" level="WARN"/>
+
+    <!-- Si querés silenciar toda la rama Spring -->
+    <!-- <logger name="org.springframework" level="WARN"/> -->
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
