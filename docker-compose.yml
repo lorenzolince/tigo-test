@@ -1,0 +1,51 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass
+      MARIADB_DATABASE: tigodbtest
+      MARIADB_USER: user
+      MARIADB_PASSWORD: password
+    ports:
+      - "3307:3306"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: user
+      PMA_PASSWORD: password
+    ports:
+      - "8076:80"
+  tigo-test-ui:
+    image: lorenzolince/tigo-test-ui
+    depends_on:
+     - mariadb
+    container_name: tigo-test-ui
+    hostname: tigo-test-ui
+    ports:
+      - "8000:80"
+    restart: on-failure
+
+  tigo-test-api:
+    image: lorenzolince/tigo-test-api
+    depends_on:
+     - mariadb
+    container_name: tigo-test-api
+    hostname: tigo-test-api
+    ports:
+      - "8082:80"
+    restart: on-failure
+    environment:
+      - DB_URL=jdbc:mariadb://mariadb:3306/tigodbtest
+      - DB_USER_NAME=user
+      - DB_PASSWORD=password
+      - DB_DRIVER=org.mariadb.jdbc.Driver
+      - SPRING_AUTO_COMMIT=false
+      - SPRING_DB_TRANSACTION=30
+      - SWAGGER_UI=true
+      - SWAGGER_DOC=true
+      - LIQUIBASE_RUN=true

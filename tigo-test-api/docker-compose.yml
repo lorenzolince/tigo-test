@@ -1,0 +1,9 @@
+services:
+  tigo-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    ports:
+      - "8000:80"
+    restart: always

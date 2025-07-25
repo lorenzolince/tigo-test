@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"
+>
+    <changeSet id="insert-employees" author="lorenzo">
+        <insert schemaName="${defaultSchemaName}" tableName="employees">
+            <column name="id"    valueNumeric="1"/>
+            <column name="name"  value="Lorenzo González"/>
+            <column name="role"  value="DevOps Architect"/>
+        </insert>
+
+        <insert schemaName="${defaultSchemaName}" tableName="employees">
+            <column name="id"    valueNumeric="2"/>
+            <column name="name"  value="Valeria Torres"/>
+            <column name="role"  value="Frontend Lead"/>
+        </insert>
+
+        <insert schemaName="${defaultSchemaName}" tableName="employees">
+            <column name="id"    valueNumeric="3"/>
+            <column name="name"  value="Samuel Rivera"/>
+            <column name="role"  value="QA Analyst"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

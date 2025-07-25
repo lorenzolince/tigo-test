@@ -1,0 +1,42 @@
+# 🔁 Control de versiones
+.git
+.gitignore
+.gitattributes
+
+# 🧪 Tests
+tests
+phpunit.xml
+
+# 📦 Dependencias frontend
+node_modules
+package.json
+vite.config.js
+
+# 📦 Composer
+composer.lock
+
+# ⚠️ Archivos sensibles y entornos de prueba
+.env.local
+.env.example
+.env.dev
+.env.backup
+#.env
+*.log
+*.md
+*.DS_Store
+
+# 🗑️ Archivos ocultos y temporales
+*.swp
+*.bak
+*.tmp
+
+# 🛠️ Cache, debugging y otros
+storage/debugbar
+storage/framework/sessions
+storage/framework/views/*.php
+storage/logs/*
+storage/*.log
+
+# 🚧 Infraestructura local que no va al build
+docker-compose.yml
+Dockerfile
